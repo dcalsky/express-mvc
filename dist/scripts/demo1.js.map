@@ -1,1 +1,0 @@
-{"version":3,"sources":["demo1.js"],"names":["a","b","cc","console","log"],"mappings":"YAAA,IAAIA,GAAI,MAEJC,EAAI,SAAAC,GACJC,QAAQC,IAARD,MAAAH","file":"demo1.js","sourcesContent":["let a = '213'\n\nlet b = (cc) => {\n    console.log(`123${a}`)\n}"]}

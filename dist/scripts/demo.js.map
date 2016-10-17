@@ -1,1 +1,0 @@
-{"version":3,"sources":["demo.js"],"names":["a","b","cc","console","log","A","_classCallCheck","this"],"mappings":"yHAAA,GAAIA,GAAI,MAEJC,EAAI,SAAAC,GACJC,QAAQC,IAARD,MAAAH,IAGEK,EACF,QAAAA,KAAcC,gBAAAC,KAAAF","file":"demo.js","sourcesContent":["let a = '213'\n\nlet b = (cc) => {\n    console.log(`123${a}`)\n}\n\nclass A {\n    constructor() {\n\n    }\n}"]}
