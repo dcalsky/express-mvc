@@ -1,0 +1,1 @@
+{"version":3,"sources":["demo.less","<no source>"],"names":[],"mappings":"AAEA,KAEI,oBCJJ,CAAA,ADOA,aAJI,2BCHJ,ADGI,kBCHJ,CAAA","file":"demo.css","sourcesContent":["@base: \"#1956d2\";\n\n.box {\n    transition: all 0.5s;\n    background: @base;\n}\n\n.box123 {\n    transition: all 0.5s;\n}",null]}
