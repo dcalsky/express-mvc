@@ -21,7 +21,7 @@ gulp.task('nodemon', cb => {
       'gulpfile.babel.js',
       'node_modules/'
     ],
-    env: { 'NODE_ENV': 'development' }
+    env: { 'NODE_ENV': process.env.NODE_ENV }
   })
     .on('start', () => {
       // Ensure start only got called once

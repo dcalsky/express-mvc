@@ -8,9 +8,9 @@ gulp.task('server', ['clean', 'watch'], cb => {
       cb)
 })
 
-
 gulp.task('server:dist', ['clean'], cb => {
     runSequence('style',
      ['lint', 'script'],
+     'nodemon',
       cb)
 })
