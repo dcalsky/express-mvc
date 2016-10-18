@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    {% include "_partial/head.njk" %}
+    {% block head %}{% endblock %}
+</head>
+<body>
+    {% block main %}{% endblock %}
+</body>
+</html>

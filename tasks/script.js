@@ -1,13 +1,14 @@
 import gulp from 'gulp'
 import gulpLoadPlugins from 'gulp-load-plugins'
 import browserSync from 'browser-sync'
+import sync from './watch.js'
 const $ = gulpLoadPlugins()
 
 gulp.task('lint', () => {
-  gulp.src('app/**/*.js')
+  gulp.src('app/static/scripts/*.js')
     .pipe($.eslint())
     .pipe($.eslint.format())
-    .pipe($.if(!browserSync.active, $.eslint.failOnError()))
+    .pipe($.if(!sync.active, $.eslint.failOnError()))
 })
 
 gulp.task('script', () => {

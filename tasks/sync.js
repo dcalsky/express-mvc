@@ -1,36 +1,39 @@
-import browserSync from 'browser-sync'
+import sync from './watch.js'
 import gulp from 'gulp'
 import nodemon from 'gulp-nodemon'
 
-const reload = browserSync.reload
+const reload = sync.reload
 
 gulp.task('sync', ['nodemon'], () => {
-  browserSync({
-    proxy: "localhost:3000",  // local node app address
-    port: 5000,  // use *different* port than above
-    notify: true
-  });
-  gulp.watch(['app/**/*'], reload)
+  sync.init({
+    proxy: "localhost:4000",
+    port: 5000,
+    notify: false
+  })
 })
 
 gulp.task('nodemon', cb => {
   var called = false;
   return nodemon({
-    script: './app/main.js',
+    script: './app/bin/www',
+    ext: 'js njk css less',
     ignore: [
       'gulpfile.babel.js',
       'node_modules/'
-    ]
+    ],
+    env: { 'NODE_ENV': 'development' }
   })
-  .on('start', function () {
-    if (!called) {
+    .on('start', () => {
+      // Ensure start only got called once
+      if (!called) { cb(); }
       called = true;
-      cb();
-    }
-  })
-  .on('restart', function () {
-    setTimeout(function () {
-      reload({ stream: false });
-    }, 1000);
-  });
+    })
+    // Browser sync is begining in 500ms
+    .on('restart', () => {
+      setTimeout(() => {
+        reload({
+          stream: false
+        });
+      }, 1500);
+    });
 })
