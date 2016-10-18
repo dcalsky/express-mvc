@@ -3,6 +3,7 @@ import gulp from 'gulp'
 import nodemon from 'gulp-nodemon'
 
 const reload = sync.reload
+const WAITING_TIME = 1500
 
 gulp.task('sync', ['nodemon'], () => {
   sync.init({
@@ -33,7 +34,7 @@ gulp.task('nodemon', cb => {
       setTimeout(() => {
         reload({
           stream: false
-        });
-      }, 1500);
-    });
+        })
+      }, WAITING_TIME)
+    })
 })

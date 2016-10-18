@@ -1,0 +1,23 @@
+{
+  "name": "express-mvc",
+  "description": "",
+  "main": "bin/www",
+  "authors": [
+    "dcalsky"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "express"
+  ],
+  "homepage": "https://github.com/dcalsky/express-mvc",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}
