@@ -7,7 +7,7 @@ const WAITING_TIME = 1500
 
 gulp.task('sync', ['nodemon'], () => {
   sync.init({
-    proxy: "localhost:4000",
+    proxy: "localhost:4000", // Express port: 4000
     port: 5000,
     notify: false
   })
@@ -22,6 +22,9 @@ gulp.task('nodemon', cb => {
       'gulpfile.babel.js',
       'node_modules/'
     ],
+    execMap: {
+      js: "node --harmony --use_strict"
+    },
     env: { 'NODE_ENV': process.env.NODE_ENV }
   })
     .on('start', () => {
