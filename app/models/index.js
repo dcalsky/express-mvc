@@ -12,20 +12,19 @@ const sequelize = new Sequelize(config.db.name, config.db.username, config.db.pa
 })
 
 let db = Object.create()
-
 fs.readdir(__dirname, (err, files) => {
     if(err) throw err
     files.foreach((file) => {
         if(path.extname(file) === '.js' && file !== 'index.js') {
-            let model = sequelize.import(path.join(__dirname, file))
-            db[model.name] = model
+            db[model.name] = sequelize.import(path.join(__dirname, file))
         }
     })
 })
 
 Object.keys(db).forEach((modelName) => {
+    const model = db.modelName
     if('associate' in model) {
-        db[modelName].associate(db)
+        model.associate(db)
     }
 })
 
@@ -35,8 +34,8 @@ if('roles' in db) {
     .then((results) => {
         console.log(results.length)
         if(results.length === 0) {
-        db['roles'].create({name: 'normal'})
-        db['roles'].create({name: 'admin'})
+            db['roles'].create({name: 'admin'})
+            db['roles'].create({name: 'normal'})
         }
     })
 }
