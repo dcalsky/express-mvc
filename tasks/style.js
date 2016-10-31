@@ -18,10 +18,11 @@ const AUTOPREFIXER_BROWSERS = [
 
 gulp.task('style', () => {
     return gulp.src([
-        'app/static/styles/**/*.less',
-        'app/static/styles/**/*.css'
+        'app/static/**/styles/*.less',
+        'app/static/**/styles/*.css',
+        '!app/static/vendors'
     ])
-      .pipe($.newer('dist/styles'))
+      .pipe($.newer('dist'))
       .pipe($.sourcemaps.init())
       .pipe($.postcss([
           less(),
@@ -31,5 +32,5 @@ gulp.task('style', () => {
       .pipe($.cssnano())
       .pipe($.size({title: 'styles'}))
       .pipe($.sourcemaps.write('./'))
-      .pipe(gulp.dest('dist/styles'))
+      .pipe(gulp.dest('dist'))
 })
