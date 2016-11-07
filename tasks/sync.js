@@ -14,18 +14,18 @@ gulp.task('sync', ['nodemon'], () => {
 })
 
 gulp.task('nodemon', cb => {
-  var called = false;
+  let called = false;
   return nodemon({
     script: './app/bin/www',
-    ext: 'js njk css less',
+    ext: 'js njk css styl',
     ignore: [
       'gulpfile.babel.js',
       'node_modules/',
     ],
     execMap: {
-      js: 'node --harmony --use_strict'
+      js: 'node --harmony --use_strict',
     },
-    env: { 'NODE_ENV': process.env.NODE_ENV }
+    env: { NODE_ENV: process.env.NODE_ENV }
   })
     .on('start', () => {
       // Ensure start only got called once
