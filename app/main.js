@@ -11,8 +11,8 @@ const nunjucks = require('nunjucks')
 let app = express()
 
 nunjucks.configure(__dirname + '/templates/', {
-    autoescape: true,
-    express: app
+  autoescape: true,
+  express: app,
 })
 
 app.set('view engine', 'njk') // Set template engine
@@ -30,13 +30,14 @@ const allowCrossDomain = (req, res, next) => {
 
   next()
 }
+app.use(allowCrossDomain)
 
 // Routing
 app.use('/', routes)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  let err = new Error('Page Not Found')
+  const err = new Error('Page Not Found')
   err.status = 404
   next(err)
 })
@@ -51,8 +52,9 @@ if (app.get('env') === 'development') {
     res.status(err.status || 500)
     res.render('error', {
       message: err.message,
-      error: err
+      error: err,
     })
+    next()
   })
 }
 
@@ -61,11 +63,12 @@ if (app.get('env') === 'development') {
 // todo: Error page
 app.use((err, req, res, next) => {
   res.status(err.status || 500)
-  /*res.render('error', {
-    message: err.message,
-    error: {}
-  });*/
+  next()
+  /* res.render('error', {
+   message: err.message,
+   error: {}
+   }); */
   res.send()
 })
 
-module.exports =  app
+module.exports = app

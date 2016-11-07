@@ -7,9 +7,9 @@ const WAITING_TIME = 1500
 
 gulp.task('sync', ['nodemon'], () => {
   sync.init({
-    proxy: "localhost:4000", // Express port: 4000
+    proxy: 'localhost:4000', // Express port: 4000
     port: 5000,
-    notify: false
+    notify: false,
   })
 })
 
@@ -20,23 +20,25 @@ gulp.task('nodemon', cb => {
     ext: 'js njk css less',
     ignore: [
       'gulpfile.babel.js',
-      'node_modules/'
+      'node_modules/',
     ],
     execMap: {
-      js: "node --harmony --use_strict"
+      js: 'node --harmony --use_strict'
     },
     env: { 'NODE_ENV': process.env.NODE_ENV }
   })
     .on('start', () => {
       // Ensure start only got called once
-      if (!called) { cb(); }
+      if (!called) {
+        cb();
+      }
       called = true;
     })
     // Browser sync is begining in 500ms
     .on('restart', () => {
       setTimeout(() => {
         reload({
-          stream: false
+          stream: false,
         })
       }, WAITING_TIME)
     })

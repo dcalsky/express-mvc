@@ -2,5 +2,5 @@ const gulp = require('gulp')
 const del = require('del')
 
 gulp.task('clean', () => {
-    del(['.tmp', 'dist/*'])
+  del(['.tmp', 'dist/*'])
 })

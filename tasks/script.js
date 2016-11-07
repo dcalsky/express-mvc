@@ -1,7 +1,6 @@
 import gulp from 'gulp'
 import gulpLoadPlugins from 'gulp-load-plugins'
-import browserSync from 'browser-sync'
-import sync from './watch.js'
+import sync from './watch'
 const $ = gulpLoadPlugins()
 
 gulp.task('lint', () => {
@@ -13,11 +12,11 @@ gulp.task('lint', () => {
 
 gulp.task('script', () => {
   gulp.src(['app/static/**/scripts/*.js', '!app/static/vendors'])
-      .pipe($.newer('dist'))
-      .pipe($.sourcemaps.init())
-      .pipe($.babel())
-      .pipe($.uglify({preserveComments: 'license'}))
-      .pipe($.size({title: 'scripts'}))
-      .pipe($.sourcemaps.write('./'))
-      .pipe(gulp.dest('dist'))
+    .pipe($.newer('dist'))
+    .pipe($.sourcemaps.init())
+    .pipe($.babel())
+    .pipe($.uglify({preserveComments: 'license'}))
+    .pipe($.size({title: 'scripts'}))
+    .pipe($.sourcemaps.write('./'))
+    .pipe(gulp.dest('dist'))
 })

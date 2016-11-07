@@ -1,6 +1,4 @@
-'use strict'
-
-const isProduction = process.env.NODE_ENV  === 'production'
+const isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = {
   port: 4000,
