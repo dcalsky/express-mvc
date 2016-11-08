@@ -8,8 +8,8 @@ const sequelize = new Sequelize(config.db.name, config.db.username, config.db.pa
   timezone: '+08:00',
   native: true,
   define: {
-    timestamps: false
-  }
+    timestamps: false,
+  },
 })
 
 const db = Object.create()

@@ -2,6 +2,7 @@ import gulp from 'gulp'
 import gulpLoadPlugins from 'gulp-load-plugins'
 import gutil from 'gulp-util'
 import sync from './watch'
+
 const $ = gulpLoadPlugins()
 
 gulp.task('lint', () => {
@@ -11,7 +12,7 @@ gulp.task('lint', () => {
     .pipe($.if(!sync.active, $.eslint.failOnError()))
 })
 
-gulp.task('script', () => {
+gulp.task('script', (cb) => {
   gulp.src(['app/static/**/scripts/*.js'])
     .pipe($.newer('dist'))
     .pipe($.sourcemaps.init())

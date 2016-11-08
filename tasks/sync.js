@@ -1,6 +1,6 @@
-import sync from './watch.js'
 import gulp from 'gulp'
 import nodemon from 'gulp-nodemon'
+import sync from './watch'
 
 const reload = sync.reload
 const WAITING_TIME = 1500
@@ -13,7 +13,7 @@ gulp.task('sync', ['nodemon'], () => {
   })
 })
 
-gulp.task('nodemon', cb => {
+gulp.task('nodemon', (cb) => {
   let called = false;
   return nodemon({
     script: './app/bin/www',
@@ -25,7 +25,7 @@ gulp.task('nodemon', cb => {
     execMap: {
       js: 'node --harmony --use_strict',
     },
-    env: { NODE_ENV: process.env.NODE_ENV }
+    env: { NODE_ENV: process.env.NODE_ENV },
   })
     .on('start', () => {
       // Ensure start only got called once
@@ -34,7 +34,7 @@ gulp.task('nodemon', cb => {
       }
       called = true;
     })
-    // Browser sync is begining in 500ms
+    // Browser sync is beginning in 500ms
     .on('restart', () => {
       setTimeout(() => {
         reload({

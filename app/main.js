@@ -8,7 +8,7 @@ const config = require('./config')
 const routes = require('./routes')
 const nunjucks = require('nunjucks')
 
-let app = express()
+const app = express()
 
 nunjucks.configure(path.join(__dirname, 'templates'), {
   autoescape: true,
@@ -24,9 +24,9 @@ app.use(cookieParser())
 
 // CORS
 const allowCrossDomain = (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', config.header['Access-Control-Allow-Origin']);
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+  res.header('Access-Control-Allow-Origin', config.header['Access-Control-Allow-Origin'])
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization')
   next()
 }
 app.use(allowCrossDomain)
@@ -66,7 +66,7 @@ app.use((err, req, res, next) => {
   /* res.render('error', {
    message: err.message,
    error: {}
-   }); */
+   }) */
   res.send()
 })
 
